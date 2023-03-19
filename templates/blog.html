@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+    <title>Blog Page</title>
+</head>
+<body>
+    <header class="navbar">
+        <div class="navbar__brand"><img class="navbar__logo" src="../static/logo.svg" />Microblog</div>
+        <ul class="navbar__navigation">
+            <li class="navbar__navigation-item"><a href="#" class="navbar__link">Recent</a></li>
+            <li class="navbar__navigation-item"><a href="#" class="navbar__link">Calendar</a></li>
+        </ul>
+    </header>
+    {% block content %}
+    <main class="main">
+        <h1>Blog</h1>
+        <section>
+                <article>
+                    {% for post in posts %}
+                    <div>
+                        <h2>{{ post.title }}</h2>
+                        <p>{{ post.date }}</p>
+                    </div>
+                    <p>{{ post.body }}</p>
+                    <p>{{ post.author.name }}</p>
+                    {% endfor %}
+                </article>
+        </section>
+    </main>
+    {% endblock %}
+</body>
+</html>
